@@ -1,0 +1,13 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: redirect-to-login
+  namespace: workbench
+spec:
+  errors:
+    query: /401.html
+    service:
+      name: custom-errors-nginx
+      port: 80
+    status:
+    - "401"

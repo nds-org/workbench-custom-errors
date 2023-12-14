@@ -1,0 +1,15 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: forwardauth
+  namespace: workbench
+spec:
+  forwardAuth:
+    address: https://kubernetes.docker.internal/oauth2/auth
+    authResponseHeaders:
+    - X-Auth-Request-Access-Token
+    - Authorization
+    authResponseHeadersRegex: ^X-
+    tls:
+      insecureSkipVerify: true
+    trustForwardHeader: true

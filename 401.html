@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Workbench: Unauthorized</title>
+</head>
+<body>
+
+<p>Unauthorized</p>
+
+<a id='signInLink' href='#'>Sign In</a>
+
+<script>
+    var origin = window.location.href;
+    var rd = encodeURIComponent(origin);
+    var protocol = window.location.href.split('://')[0];
+    var rootDomain = window.location.href.split('://')[1].split('/')[0].split('.').splice(1).join('.');
+    var href = protocol + '://' + rootDomain + '/oauth2/start?rd=' + rd;
+    document.getElementById('signInLink').href = href;
+    window.location.href = href;
+</script>
+
+</body>
+</html>

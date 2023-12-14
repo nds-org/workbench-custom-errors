@@ -1,0 +1,10 @@
+version: '3.9'
+
+services:
+  nginx-custom-errors:
+    container_name: 'nginx-custom-errors'
+    image: 'ndslabs/custom-errors'
+    build:
+      context: .
+    ports:
+    - 8888:80
