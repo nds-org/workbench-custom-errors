@@ -105,7 +105,7 @@ spec:
     - kubernetes.docker.internal
     - '*.kubernetes.docker.internal'
 ```
-
+### Format
 Note the `traefik.ingress.kubernetes.io/router.middlewares` annotation value contains references to our created middleware pieces in the following format:
 ```
 {namespace}-{name}@{provider}
@@ -115,6 +115,8 @@ For our example:
 * `{namespace}` is `workbench`
 * `{name}` is each of our created middlewares above
 * `{provider}` is `kubernetescrd`, since we are using the Kubernetes Custom Resource Definitions (CRDs) provided by Traefik
+
+Note that the **order** in which the middleware is defined DOES matter
 
 ## Testing
 Attempt to navigate to your Ingress host.
