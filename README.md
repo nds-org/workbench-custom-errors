@@ -1,6 +1,6 @@
-# nginx-custom-errors
+# workbench-custom-errors
 
-An NGINX instance for serving custom errors for Kubernetes cluster
+A simple NGINX instance for serving custom error messages for Kubernetes Ingress
 
 
 Cases handled:
