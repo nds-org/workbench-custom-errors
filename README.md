@@ -106,7 +106,7 @@ spec:
     - '*.kubernetes.docker.internal'
 ```
 ### Format
-Note the `traefik.ingress.kubernetes.io/router.middlewares` annotation value contains references to our created middleware pieces in the following format:
+Note the `traefik.ingress.kubernetes.io/router.middlewares` annotation value contains a comma-separated list of middleware to apply using the following format:
 ```
 {namespace}-{name}@{provider}
 ```
