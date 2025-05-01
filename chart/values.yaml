@@ -19,6 +19,6 @@ service:
 ingress:
   className: ""
   hostname: ""
-  tlsSecretName: "ndslabs-tls"
+  tlsSecretName: ndslabs-tls
   
-
+extraDeploy: []
