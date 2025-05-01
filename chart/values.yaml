@@ -8,6 +8,22 @@ config:
   # URL where we should route user to sign in (e.g. /oauth2/start?rd=<redirect-url>)
   signInUrl: ""
 
+  # Configure the Errors middleware
+  redirectToLogin:
+    name: workbench-redirect-to-login
+
+  # Configure the ForwardAuth middleware
+  privateAuth:
+    name: workbench-private-auth
+    forwardAddress: "" 
+
+  # Configure the Headers middleware
+  corsHeader:
+    enable: false
+    name: workbench-cors-header
+    # TODO: origins could be a list
+    allowedOrigins: ""
+
 image:
   repository: ndslabs/custom-errors
   pullPolicy: IfNotPresent

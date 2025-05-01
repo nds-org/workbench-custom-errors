@@ -1,0 +1,21 @@
+# Default values for chart.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+config:
+  # URL where we should route user to sign in (e.g. /oauth2/start, do not include redirect parameter)
+  signInUrl: "https://workbench.amr-rti.ncsa.illinois.edu/oauth2/start"
+
+  privateAuth:
+    forwardAddress: "https://workbench.amr-rti.ncsa.illinois.edu/oauth2/auth"
+
+  corsHeader:
+    enabled: false
+
+ingress:
+  className: traefik
+  hostname: "https://workbench.amr-rti.ncsa.illinois.edu"
+  tlsSecretName: ndslabs-tls
+  
