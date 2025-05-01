@@ -1,68 +1,69 @@
-{{- if .Values.customErrors }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ .Values.customErrorsName }}
+  name: {{ .Release.Name }}
+  labels:
+    app: {{ .Release.Name }}
 spec:
-  ingressClassName: '{{ index .Values "oauth2-proxy" "ingress" "ingressClassName" }}'
+  ingressClassName: {{ .Values.ingress.className }}
   tls:
     - hosts:
-      - '{{ index .Values "oauth2-proxy" "ingress" "hostname" }}'
+      - '{{ .Values.ingress.hostname }}'
       secretName: ndslabs-tls
   rules:
-  - host: '{{ index .Values "oauth2-proxy" "ingress" "hostname" }}'
+  - host: '{{ .Values.ingress.hostname }}'
     http:
       paths:
       - path: /401.html
         pathType: Prefix
         backend:
           service:
-            name: {{ .Values.customErrorsName }}
+            name: {{ .Release.Name }}
             port:
               number: 80
       - path: /env.js
         pathType: Prefix
         backend:
           service:
-            name: {{ .Values.customErrorsName }}
+            name: {{ .Release.Name }}
             port:
               number: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.customErrorsName }}
+  name: {{ .Release.Name }}
 spec:
+  type: {{ .Values.service.type }}
   selector:
-    app: {{ .Values.customErrorsName }}
+    app: {{ .Release.Name }}
   ports:
     - protocol: TCP
-      port: 80
+      port: {{ .Values.service.port }}
       targetPort: 80
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.customErrorsName }}
+  name: {{ .Release.Name }}
   labels:
-    app: {{ .Values.customErrorsName }}
+    app: {{ .Release.Name }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Values.customErrorsName }}
+      app: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: {{ .Values.customErrorsName }}
+        app: {{ .Release.Name }}
     spec:
       containers:
       - name: nginx
-        image: moleculemaker/custom-errors
-        imagePullPolicy: Always
+        image: {{ .Values.image.repository }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
           - name: SIGN_IN_URL
-            value: {{ .Values.customErrorsSignInUrl }}
+            value: {{ .Values.config.signInUrl }}
         ports:
         - containerPort: 80
-{{- end }}
