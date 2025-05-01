@@ -64,6 +64,6 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
           - name: SIGN_IN_URL
-            value: {{ .Values.config.signInUrl }}
+            value: '{{ .Values.config.signInUrl }}'
         ports:
         - containerPort: 80

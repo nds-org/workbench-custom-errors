@@ -12,5 +12,5 @@ config:
 
 # How should this error page be served?
 ingress:
-  hostname: "https://next.cheesehub.org"
+  hostname: "next.cheesehub.org"
   
