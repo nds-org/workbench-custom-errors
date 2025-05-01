@@ -1,0 +1,17 @@
+Application is now running!
+
+Access http{{- if .Values.ingress.tls }}s{{end}}://{{ .Values.ingress.hostname }} to see the sign-in page!
+
+
+Add these annotations to your ingress rules to protect them using this new Middleware:
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: "{{ .Release.Namespace }}-{{ .Values.config.redirectToLogin.name }}@kubernetescrd,{{ .Release.Namespace }}-{{ .Values.config.privateAuth.name }}@kubernetescrd"
+    traefik.ingress.kubernetes.io/router.tls: "true"
+
+
+You can run the following command to add these annotations to your existing ingress rules:
+    kubectl annotate ingress -l manager=workbench -n {{ .Release.Namespace }} \
+        traefik.ingress.kubernetes.io/router.middlewares="{{ .Release.Namespace }}-{{ .Values.config.redirectToLogin.name }}@kubernetescrd,{{ .Release.Namespace }}-{{ .Values.config.privateAuth.name }}@kubernetescrd" \
+        traefik.ingress.kubernetes.io/router.tls="true"
+
+
