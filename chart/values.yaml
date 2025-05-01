@@ -7,7 +7,6 @@ replicaCount: 1
 config:
   # URL where we should route user to sign in (e.g. /oauth2/start?rd=<redirect-url>)
   signInUrl: ""
-  windowTitle: Workbench
 
   # Configure the Errors middleware
   redirectToLogin:
