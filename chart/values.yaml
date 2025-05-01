@@ -19,7 +19,7 @@ config:
 
 image:
   repository: ndslabs/custom-errors
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 
 service:
   type: ClusterIP
