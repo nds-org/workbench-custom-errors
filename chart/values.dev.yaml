@@ -1,16 +1,16 @@
-# Values for chart for the AMR-RTI instance of Workbench
+# Values for chart for the main dev instance of Workbench
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 config:
   # Where should we send the user to log in?
-  signInUrl: "https://workbench.amr-rti.ncsa.illinois.edu/oauth2/start"
+  signInUrl: "https://dev.ndslabs.org/oauth2/start"
 
   # How to know if we should route to the login page
   privateAuth:
-    forwardAddress: "https://workbench.amr-rti.ncsa.illinois.edu/oauth2/auth"
+    forwardAddress: "https://dev.ndslabs.org/oauth2/auth"
 
 # How should this error page be served?
 ingress:
-  hostname: "workbench.amr-rti.ncsa.illinois.edu"
+  hostname: "dev.ndslabs.org"
   
