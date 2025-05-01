@@ -17,13 +17,6 @@ config:
     name: workbench-private-auth
     forwardAddress: "" 
 
-  # Configure the Headers middleware
-  corsHeader:
-    enable: false
-    name: workbench-cors-header
-    # TODO: origins could be a list
-    allowedOrigins: ""
-
 image:
   repository: ndslabs/custom-errors
   pullPolicy: IfNotPresent
@@ -35,6 +28,7 @@ service:
 ingress:
   className: ""
   hostname: ""
-  tlsSecretName: ndslabs-tls
+  tls:
+    secretName: ""
   
 extraDeploy: []

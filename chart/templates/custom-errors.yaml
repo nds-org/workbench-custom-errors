@@ -9,7 +9,7 @@ spec:
   tls:
     - hosts:
       - '{{ .Values.ingress.hostname }}'
-      secretName: ndslabs-tls
+      secretName: {{ .Values.ingress.tls.secretName }}
   rules:
   - host: '{{ .Values.ingress.hostname }}'
     http:
